@@ -177,4 +177,13 @@ public class FractionOperationsTest {
         assertEquals(new FractionVo(1, 2), result);
     }
 
+    @Test
+    public void should_simplify_2_6_by_1_3() {
+        FractionVo fraction1 = new FractionVo(2, 6);
+
+        FractionVo result = FractionOperations.simplify(fraction1);
+
+        assertEquals(new FractionVo(1, 3), result);
+    }
+
 }
