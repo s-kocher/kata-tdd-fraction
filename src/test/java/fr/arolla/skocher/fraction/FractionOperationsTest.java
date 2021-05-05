@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Test;
 
 public class FractionOperationsTest {
 
+    /** Test Fraction VO equals **/
     @Test
     public void should_two_same_fractions_be_equal() {
         FractionVo fraction1 = new FractionVo(1, 3);
@@ -22,6 +23,8 @@ public class FractionOperationsTest {
 
         assertNotEquals(fraction1, fraction2);
     }
+
+    /** Test same denominator sum **/
 
     @Test
     public void should_sum_1_3_plus_1_3_be_2_3() {
@@ -102,5 +105,18 @@ public class FractionOperationsTest {
 
         assertEquals(new FractionVo(5, 7), result);
     }
+
+    /** Test different denominator sum **/
+    @Test
+    public void should_sum_1_5_plus_1_6_be_11_30() {
+        FractionVo fraction1 = new FractionVo(1, 5);
+        FractionVo fraction2 = new FractionVo(1, 6);
+
+        FractionVo result = FractionOperations.sum(fraction1, fraction2);
+
+        assertEquals(new FractionVo(11, 30), result);
+    }
+
+
 
 }
