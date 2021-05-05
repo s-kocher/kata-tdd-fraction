@@ -22,19 +22,11 @@ public class FractionOperations {
     }
 
     public static FractionVo simplify(FractionVo fraction) {
-        if (fraction.getDenominator() == 6) {
-            if (fraction.getNumerator() == 4) {
-                return new FractionVo(2, 3);
-            }
-            return new FractionVo(1, 3);
-        }
-        if (fraction.getDenominator() == 8) {
-            if (fraction.getNumerator() == 2) {
-                return new FractionVo(1, 4);
-            } else  if (fraction.getNumerator() == 6) {
-                return new FractionVo(3, 4);
-            }
-        }
-        return new FractionVo(1, 2) ;
+        int gcd = gcd(fraction.getNumerator(), fraction.getDenominator());
+
+        return new FractionVo(
+            fraction.getNumerator() / gcd,
+            fraction.getDenominator() / gcd
+        );
     }
 }
