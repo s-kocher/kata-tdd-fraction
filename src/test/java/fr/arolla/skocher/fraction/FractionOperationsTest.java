@@ -213,4 +213,14 @@ public class FractionOperationsTest {
         assertEquals(new FractionVo(1, 4), result);
     }
 
+    /** Fraction sum + simplification **/
+    @Test
+    public void should_sum_1_3_plus_1_6_be_1_2() {
+        FractionVo fraction1 = new FractionVo(1, 3);
+        FractionVo fraction2 = new FractionVo(1, 6);
+
+        FractionVo result = FractionOperations.sum(fraction1, fraction2);
+
+        assertEquals(new FractionVo(1, 2), result);
+    }
 }
