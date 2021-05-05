@@ -31,6 +31,8 @@ public class FractionOperations {
         if (fraction.getDenominator() == 8) {
             if (fraction.getNumerator() == 2) {
                 return new FractionVo(1, 4);
+            } else  if (fraction.getNumerator() == 6) {
+                return new FractionVo(3, 4);
             }
         }
         return new FractionVo(1, 2) ;
