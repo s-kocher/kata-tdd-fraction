@@ -83,4 +83,14 @@ public class FractionOperationsTest {
         assertEquals(new FractionVo(3, 5), result);
     }
 
+    @Test
+    public void should_sum_2_5_plus_2_5_be_4_5() {
+        FractionVo fraction1 = new FractionVo(2, 5);
+        FractionVo fraction2 = new FractionVo(2, 5);
+
+        FractionVo result = FractionOperations.sum(fraction1, fraction2);
+
+        assertEquals(new FractionVo(4, 5), result);
+    }
+
 }
