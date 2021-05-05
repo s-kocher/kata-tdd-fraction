@@ -157,5 +157,14 @@ public class FractionOperationsTest {
         assertEquals(new FractionVo(23, 66), result);
     }
 
+    @Test
+    public void should_sum_1_6_plus_3_11_be_29_66() {
+        FractionVo fraction1 = new FractionVo(1, 6);
+        FractionVo fraction2 = new FractionVo(3, 11);
+
+        FractionVo result = FractionOperations.sum(fraction1, fraction2);
+
+        assertEquals(new FractionVo(29, 66), result);
+    }
 
 }
