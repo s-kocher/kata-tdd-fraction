@@ -7,19 +7,12 @@ public class FractionOperations {
     }
 
     public static FractionVo sum(FractionVo fraction1, FractionVo fraction2) {
-        if (fraction1.getDenominator() != fraction2.getDenominator()) {
-            int numerator =
-                fraction1.getNumerator() * fraction2.getDenominator() +
-                fraction2.getNumerator() * fraction1.getDenominator();
-            int denominator = fraction1.getDenominator() * fraction2.getDenominator();
+        int numerator =
+            fraction1.getNumerator() * fraction2.getDenominator() +
+            fraction2.getNumerator() * fraction1.getDenominator();
+        int denominator = fraction1.getDenominator() * fraction2.getDenominator();
 
-            FractionVo result = new FractionVo(numerator, denominator);
-
-            return simplify(result);
-        }
-
-        int numerator = fraction1.getNumerator() + fraction2.getNumerator();
-        FractionVo result =  new FractionVo(numerator, fraction1.getDenominator());
+        FractionVo result = new FractionVo(numerator, denominator);
 
         return simplify(result);
     }
