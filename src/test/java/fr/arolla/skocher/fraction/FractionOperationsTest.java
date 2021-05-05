@@ -24,13 +24,23 @@ public class FractionOperationsTest {
     }
 
     @Test
-    public void should_sum_2_fractions_with_same_denominator_have_same_denominator_and_as_numerator_the_sum_of_the_numerators() {
+    public void should_sum_1_3_plus_1_3_be_2_3() {
         FractionVo fraction1 = new FractionVo(1, 3);
         FractionVo fraction2 = new FractionVo(1, 3);
 
         FractionVo result = FractionOperations.sum(fraction1, fraction2);
 
         assertEquals(new FractionVo(2, 3), result);
+    }
+
+    @Test
+    public void should_sum_1_5_plus_1_5_be_2_5() {
+        FractionVo fraction1 = new FractionVo(1, 5);
+        FractionVo fraction2 = new FractionVo(1, 5);
+
+        FractionVo result = FractionOperations.sum(fraction1, fraction2);
+
+        assertEquals(new FractionVo(2, 5), result);
     }
 
 }
