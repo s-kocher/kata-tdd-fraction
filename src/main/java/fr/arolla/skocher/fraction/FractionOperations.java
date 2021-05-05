@@ -6,4 +6,7 @@ public class FractionOperations {
         return b == 0 ? a : gcd(b, a % b);
     }
 
+    public static FractionVo sum(FractionVo fraction1, FractionVo fraction2) {
+        return null;
+    }
 }

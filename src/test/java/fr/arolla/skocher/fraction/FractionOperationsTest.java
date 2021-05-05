@@ -23,4 +23,14 @@ public class FractionOperationsTest {
         assertNotEquals(fraction1, fraction2);
     }
 
+    @Test
+    public void should_sum_2_fractions_with_same_denominator_have_same_denominator_and_as_numerator_the_sum_of_the_numerators() {
+        FractionVo fraction1 = new FractionVo(1, 3);
+        FractionVo fraction2 = new FractionVo(1, 3);
+
+        FractionVo result = FractionOperations.sum(fraction1, fraction2);
+
+        assertEquals(new FractionVo(2, 3), result);
+    }
+
 }
