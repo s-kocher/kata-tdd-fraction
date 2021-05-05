@@ -195,4 +195,13 @@ public class FractionOperationsTest {
         assertEquals(new FractionVo(2, 3), result);
     }
 
+    @Test
+    public void should_simplify_2_8_by_1_4() {
+        FractionVo fraction1 = new FractionVo(2, 8);
+
+        FractionVo result = FractionOperations.simplify(fraction1);
+
+        assertEquals(new FractionVo(1, 4), result);
+    }
+
 }

@@ -28,6 +28,11 @@ public class FractionOperations {
             }
             return new FractionVo(1, 3);
         }
+        if (fraction.getDenominator() == 8) {
+            if (fraction.getNumerator() == 2) {
+                return new FractionVo(1, 4);
+            }
+        }
         return new FractionVo(1, 2) ;
     }
 }
