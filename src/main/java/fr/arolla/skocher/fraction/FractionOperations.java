@@ -7,24 +7,8 @@ public class FractionOperations {
     }
 
     public static FractionVo sum(FractionVo fraction1, FractionVo fraction2) {
-        if (fraction1.getNumerator() == 2 && fraction2.getNumerator() == 2) {
-            return new FractionVo(4, fraction1.getDenominator());
-        }
-        if (fraction1.getNumerator() == 2 && fraction2.getNumerator() == 3) {
-            return new FractionVo(5, fraction1.getDenominator());
-        }
+        int numerator = fraction1.getNumerator() + fraction2.getNumerator();
 
-        if (fraction2.getNumerator() == 2) {
-            return new FractionVo(3, fraction1.getDenominator());
-        }
-        if (fraction2.getNumerator() == 3) {
-            return new FractionVo(4, fraction1.getDenominator());
-        }
-
-        if (fraction1.getNumerator() == 2) {
-            return new FractionVo(3, fraction1.getDenominator());
-        }
-
-        return new FractionVo(2, fraction1.getDenominator());
+        return new FractionVo(numerator, fraction1.getDenominator());
     }
 }
