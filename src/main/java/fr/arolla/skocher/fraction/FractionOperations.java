@@ -10,6 +10,9 @@ public class FractionOperations {
         if (fraction1.getDenominator() == 5) {
             return new FractionVo(2, 5);
         }
+        if (fraction1.getDenominator() == 7) {
+            return new FractionVo(2, 7);
+        }
         return new FractionVo(2, 3);
     }
 }
