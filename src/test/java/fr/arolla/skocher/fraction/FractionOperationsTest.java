@@ -43,4 +43,14 @@ public class FractionOperationsTest {
         assertEquals(new FractionVo(2, 5), result);
     }
 
+    @Test
+    public void should_sum_1_7_plus_1_7_be_2_7() {
+        FractionVo fraction1 = new FractionVo(1, 7);
+        FractionVo fraction2 = new FractionVo(1, 7);
+
+        FractionVo result = FractionOperations.sum(fraction1, fraction2);
+
+        assertEquals(new FractionVo(2, 7), result);
+    }
+
 }
