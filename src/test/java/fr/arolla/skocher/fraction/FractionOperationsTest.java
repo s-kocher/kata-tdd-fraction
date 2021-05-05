@@ -93,4 +93,14 @@ public class FractionOperationsTest {
         assertEquals(new FractionVo(4, 5), result);
     }
 
+    @Test
+    public void should_sum_2_7_plus_3_7_be_5_7() {
+        FractionVo fraction1 = new FractionVo(2, 7);
+        FractionVo fraction2 = new FractionVo(3, 7);
+
+        FractionVo result = FractionOperations.sum(fraction1, fraction2);
+
+        assertEquals(new FractionVo(5, 7), result);
+    }
+
 }
