@@ -20,4 +20,8 @@ public class FractionOperations {
 
         return new FractionVo(numerator, fraction1.getDenominator());
     }
+
+    public static FractionVo simplify(FractionVo fraction1) {
+        return null;
+    }
 }

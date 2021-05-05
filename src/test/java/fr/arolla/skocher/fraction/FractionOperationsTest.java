@@ -2,7 +2,6 @@ package fr.arolla.skocher.fraction;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.junit.jupiter.api.Test;
 
 public class FractionOperationsTest {
@@ -165,6 +164,17 @@ public class FractionOperationsTest {
         FractionVo result = FractionOperations.sum(fraction1, fraction2);
 
         assertEquals(new FractionVo(29, 66), result);
+    }
+
+    /** Fraction simplification **/
+
+    @Test
+    public void should_simplify_2_4_by_1_2() {
+        FractionVo fraction1 = new FractionVo(2, 4);
+
+        FractionVo result = FractionOperations.simplify(fraction1);
+
+        assertEquals(new FractionVo(1, 2), result);
     }
 
 }
