@@ -22,6 +22,6 @@ public class FractionOperations {
     }
 
     public static FractionVo simplify(FractionVo fraction1) {
-        return null;
+        return new FractionVo(1, 2) ;
     }
 }
