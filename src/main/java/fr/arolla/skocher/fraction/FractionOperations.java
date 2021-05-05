@@ -19,8 +19,9 @@ public class FractionOperations {
         }
 
         int numerator = fraction1.getNumerator() + fraction2.getNumerator();
+        FractionVo result =  new FractionVo(numerator, fraction1.getDenominator());
 
-        return new FractionVo(numerator, fraction1.getDenominator());
+        return simplify(result);
     }
 
     public static FractionVo simplify(FractionVo fraction) {
