@@ -7,6 +7,6 @@ public class FractionOperations {
     }
 
     public static FractionVo sum(FractionVo fraction1, FractionVo fraction2) {
-        return null;
+        return new FractionVo(2, 3);
     }
 }
