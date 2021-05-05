@@ -15,13 +15,7 @@ public class FractionOperations {
 
             FractionVo result = new FractionVo(numerator, denominator);
 
-            if (result.equals(new FractionVo(9, 18))) {
-                return new FractionVo(1, 2);
-            } else if (result.equals(new FractionVo(12, 18))) {
-                return new FractionVo(2, 3);
-            }
-
-            return result;
+            return simplify(result);
         }
 
         int numerator = fraction1.getNumerator() + fraction2.getNumerator();
