@@ -33,4 +33,8 @@ public class FractionVo {
         return Objects.hash(numerator, denominator);
     }
 
+    @Override
+    public String toString() {
+        return numerator + "/" + denominator;
+    }
 }
