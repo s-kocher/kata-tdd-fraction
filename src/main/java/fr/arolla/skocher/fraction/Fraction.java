@@ -37,4 +37,29 @@ public class Fraction {
     public String toString() {
         return numerator + "/" + denominator;
     }
+
+    public Fraction add(Fraction otherFraction) {
+        int sameDenominatorNumerator =
+            numerator * otherFraction.getDenominator() +
+                    otherFraction.getNumerator() * denominator;
+        int sameDenominator = denominator * otherFraction.getDenominator();
+
+        Fraction result = new Fraction(sameDenominatorNumerator, sameDenominator);
+
+        return result.simplify();
+    }
+
+    public Fraction simplify() {
+        int gcd = gcd(numerator, denominator);
+
+        return new Fraction(
+            numerator / gcd,
+            denominator / gcd
+        );
+    }
+
+    static int gcd(int a, int b) {
+        return b == 0 ? a : gcd(b, a % b);
+    }
+
 }

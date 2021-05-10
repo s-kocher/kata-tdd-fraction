@@ -58,7 +58,7 @@ public class FractionOperationsTest {
     }
 
     private void assertFractionSum(Fraction fraction1, Fraction fraction2, Fraction expectedFraction) {
-        Fraction result = FractionOperations.sum(fraction1, fraction2);
+        Fraction result = fraction1.add(fraction2);
 
         assertEquals(expectedFraction, result);
     }
@@ -77,7 +77,7 @@ public class FractionOperationsTest {
     @ParameterizedTest(name = "{0} => {1} ")
     @MethodSource("fractionSimplificationInputAndExpected")
     public void should_simplify_fraction_provide_expected_result(Fraction fraction, Fraction expectedSimplifiedFraction) {
-        Fraction result = FractionOperations.simplify(fraction);
+        Fraction result = fraction.simplify();
 
         assertEquals(expectedSimplifiedFraction, result);
     }
