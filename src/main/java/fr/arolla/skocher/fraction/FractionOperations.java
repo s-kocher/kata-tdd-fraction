@@ -6,21 +6,21 @@ public class FractionOperations {
         return b == 0 ? a : gcd(b, a % b);
     }
 
-    public static FractionVo sum(FractionVo fraction1, FractionVo fraction2) {
+    public static Fraction sum(Fraction fraction1, Fraction fraction2) {
         int numerator =
             fraction1.getNumerator() * fraction2.getDenominator() +
             fraction2.getNumerator() * fraction1.getDenominator();
         int denominator = fraction1.getDenominator() * fraction2.getDenominator();
 
-        FractionVo result = new FractionVo(numerator, denominator);
+        Fraction result = new Fraction(numerator, denominator);
 
         return simplify(result);
     }
 
-    public static FractionVo simplify(FractionVo fraction) {
+    public static Fraction simplify(Fraction fraction) {
         int gcd = gcd(fraction.getNumerator(), fraction.getDenominator());
 
-        return new FractionVo(
+        return new Fraction(
             fraction.getNumerator() / gcd,
             fraction.getDenominator() / gcd
         );

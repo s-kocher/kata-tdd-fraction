@@ -2,12 +2,12 @@ package fr.arolla.skocher.fraction;
 
 import java.util.Objects;
 
-public class FractionVo {
+public class Fraction {
 
     private final int numerator;
     private final int denominator;
 
-    public FractionVo(int numerator, int denominator) {
+    public Fraction(int numerator, int denominator) {
         this.numerator = numerator;
         this.denominator = denominator;
     }
@@ -24,7 +24,7 @@ public class FractionVo {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        FractionVo that = (FractionVo) o;
+        Fraction that = (Fraction) o;
         return numerator == that.numerator && denominator == that.denominator;
     }
 
