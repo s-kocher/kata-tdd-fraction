@@ -39,12 +39,14 @@ public class Fraction {
     }
 
     public Fraction add(Fraction otherFraction) {
-        int sameDenominatorNumerator =
-            numerator * otherFraction.getDenominator() +
-                    otherFraction.getNumerator() * denominator;
+        int numeratorWithSameDenominator = numerator * otherFraction.getDenominator();
+        int numeratorOtherWithSameDenominator = otherFraction.getNumerator() * denominator;
+
         int sameDenominator = denominator * otherFraction.getDenominator();
 
-        Fraction result = new Fraction(sameDenominatorNumerator, sameDenominator);
+        int numeratorsSumWithSameDenominator = numeratorWithSameDenominator + numeratorOtherWithSameDenominator;
+
+        Fraction result = new Fraction(numeratorsSumWithSameDenominator, sameDenominator);
 
         return result.simplify();
     }
