@@ -2,7 +2,13 @@ package fr.arolla.skocher.fraction;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
+
+import java.util.stream.Stream;
+
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
 
 public class FractionOperationsTest {
 
@@ -23,227 +29,75 @@ public class FractionOperationsTest {
         assertNotEquals(fraction1, fraction2);
     }
 
-    /** Test same denominator sum **/
 
-    @Test
-    public void should_sum_1_3_plus_1_3_be_2_3() {
-        Fraction fraction1 = new Fraction(1, 3);
-        Fraction fraction2 = new Fraction(1, 3);
-
-        Fraction result = FractionOperations.sum(fraction1, fraction2);
-
-        assertEquals(new Fraction(2, 3), result);
+    static Stream<Arguments> fractionsSumInputsAndExpectedResult () {
+        return Stream.of(
+            Arguments.of(new Fraction(1, 3), new Fraction(1, 3), new Fraction(2, 3)),
+            Arguments.of(new Fraction(1, 5), new Fraction(1, 5), new Fraction(2, 5)),
+            Arguments.of(new Fraction(1, 7), new Fraction(1, 7), new Fraction(2, 7)),
+            Arguments.of(new Fraction(1, 5), new Fraction(2, 5), new Fraction(3, 5)),
+            Arguments.of(new Fraction(1, 5), new Fraction(3, 5), new Fraction(4, 5)),
+            Arguments.of(new Fraction(2, 5), new Fraction(1, 5), new Fraction(3, 5)),
+            Arguments.of(new Fraction(2, 5), new Fraction(2, 5), new Fraction(4, 5)),
+            Arguments.of(new Fraction(2, 7), new Fraction(3, 7), new Fraction(5, 7)),
+            Arguments.of(new Fraction(1, 5), new Fraction(1, 6), new Fraction(11, 30)),
+            Arguments.of(new Fraction(1, 5), new Fraction(1, 7), new Fraction(12, 35)),
+            Arguments.of(new Fraction(1, 5), new Fraction(1, 9), new Fraction(14, 45)),
+            Arguments.of(new Fraction(1, 5), new Fraction(2, 11), new Fraction(21, 55)),
+            Arguments.of(new Fraction(1, 6), new Fraction(2, 11), new Fraction(23, 66)),
+            Arguments.of(new Fraction(1, 6), new Fraction(3, 11), new Fraction(29, 66))
+        );
     }
 
-    @Test
-    public void should_sum_1_5_plus_1_5_be_2_5() {
-        Fraction fraction1 = new Fraction(1, 5);
-        Fraction fraction2 = new Fraction(1, 5);
+    @ParameterizedTest(name = "{0} + {1} = {2} ")
+    @MethodSource("fractionsSumInputsAndExpectedResult")
+    public void should_sum_of_2_fractions_provide_expected_results(
+        Fraction fraction1, Fraction fraction2, Fraction expectedFraction) {
 
-        Fraction result = FractionOperations.sum(fraction1, fraction2);
-
-        assertEquals(new Fraction(2, 5), result);
+        assertFractionSum(fraction1, fraction2, expectedFraction);
     }
 
-    @Test
-    public void should_sum_1_7_plus_1_7_be_2_7() {
-        Fraction fraction1 = new Fraction(1, 7);
-        Fraction fraction2 = new Fraction(1, 7);
-
+    private void assertFractionSum(Fraction fraction1, Fraction fraction2, Fraction expectedFraction) {
         Fraction result = FractionOperations.sum(fraction1, fraction2);
 
-        assertEquals(new Fraction(2, 7), result);
-    }
-
-    @Test
-    public void should_sum_1_5_plus_2_5_be_3_5() {
-        Fraction fraction1 = new Fraction(1, 5);
-        Fraction fraction2 = new Fraction(2, 5);
-
-        Fraction result = FractionOperations.sum(fraction1, fraction2);
-
-        assertEquals(new Fraction(3, 5), result);
-    }
-
-    @Test
-    public void should_sum_1_5_plus_3_5_be_4_5() {
-        Fraction fraction1 = new Fraction(1, 5);
-        Fraction fraction2 = new Fraction(3, 5);
-
-        Fraction result = FractionOperations.sum(fraction1, fraction2);
-
-        assertEquals(new Fraction(4, 5), result);
-    }
-
-    @Test
-    public void should_sum_2_5_plus_1_5_be_3_5() {
-        Fraction fraction1 = new Fraction(2, 5);
-        Fraction fraction2 = new Fraction(1, 5);
-
-        Fraction result = FractionOperations.sum(fraction1, fraction2);
-
-        assertEquals(new Fraction(3, 5), result);
-    }
-
-    @Test
-    public void should_sum_2_5_plus_2_5_be_4_5() {
-        Fraction fraction1 = new Fraction(2, 5);
-        Fraction fraction2 = new Fraction(2, 5);
-
-        Fraction result = FractionOperations.sum(fraction1, fraction2);
-
-        assertEquals(new Fraction(4, 5), result);
-    }
-
-    @Test
-    public void should_sum_2_7_plus_3_7_be_5_7() {
-        Fraction fraction1 = new Fraction(2, 7);
-        Fraction fraction2 = new Fraction(3, 7);
-
-        Fraction result = FractionOperations.sum(fraction1, fraction2);
-
-        assertEquals(new Fraction(5, 7), result);
-    }
-
-    /** Test different denominator sum **/
-    @Test
-    public void should_sum_1_5_plus_1_6_be_11_30() {
-        Fraction fraction1 = new Fraction(1, 5);
-        Fraction fraction2 = new Fraction(1, 6);
-
-        Fraction result = FractionOperations.sum(fraction1, fraction2);
-
-        assertEquals(new Fraction(11, 30), result);
-    }
-
-    @Test
-    public void should_sum_1_5_plus_1_7_be_12_35() {
-        Fraction fraction1 = new Fraction(1, 5);
-        Fraction fraction2 = new Fraction(1, 7);
-
-        Fraction result = FractionOperations.sum(fraction1, fraction2);
-
-        assertEquals(new Fraction(12, 35), result);
-    }
-
-    @Test
-    public void should_sum_1_5_plus_1_9_be_14_45() {
-        Fraction fraction1 = new Fraction(1, 5);
-        Fraction fraction2 = new Fraction(1, 9);
-
-        Fraction result = FractionOperations.sum(fraction1, fraction2);
-
-        assertEquals(new Fraction(14, 45), result);
-    }
-
-    @Test
-    public void should_sum_1_5_plus_2_11_be_21_55() {
-        Fraction fraction1 = new Fraction(1, 5);
-        Fraction fraction2 = new Fraction(2, 11);
-
-        Fraction result = FractionOperations.sum(fraction1, fraction2);
-
-        assertEquals(new Fraction(21, 55), result);
-    }
-
-    @Test
-    public void should_sum_1_6_plus_2_11_be_23_66() {
-        Fraction fraction1 = new Fraction(1, 6);
-        Fraction fraction2 = new Fraction(2, 11);
-
-        Fraction result = FractionOperations.sum(fraction1, fraction2);
-
-        assertEquals(new Fraction(23, 66), result);
-    }
-
-    @Test
-    public void should_sum_1_6_plus_3_11_be_29_66() {
-        Fraction fraction1 = new Fraction(1, 6);
-        Fraction fraction2 = new Fraction(3, 11);
-
-        Fraction result = FractionOperations.sum(fraction1, fraction2);
-
-        assertEquals(new Fraction(29, 66), result);
+        assertEquals(expectedFraction, result);
     }
 
     /** Fraction simplification **/
-
-    @Test
-    public void should_simplify_2_4_by_1_2() {
-        Fraction fraction1 = new Fraction(2, 4);
-
-        Fraction result = FractionOperations.simplify(fraction1);
-
-        assertEquals(new Fraction(1, 2), result);
+    static Stream<Arguments> fractionSimplificationInputAndExpected () {
+        return Stream.of(
+            Arguments.of(new Fraction(2, 4), new Fraction(1, 2)),
+            Arguments.of(new Fraction(2, 6), new Fraction(1, 3)),
+            Arguments.of(new Fraction(4, 6), new Fraction(2, 3)),
+            Arguments.of(new Fraction(2, 8), new Fraction(1, 4)),
+            Arguments.of(new Fraction(6, 8), new Fraction(3, 4))
+         );
     }
 
-    @Test
-    public void should_simplify_2_6_by_1_3() {
-        Fraction fraction1 = new Fraction(2, 6);
+    @ParameterizedTest(name = "{0} => {1} ")
+    @MethodSource("fractionSimplificationInputAndExpected")
+    public void should_simplify_fraction_provide_expected_result(Fraction fraction, Fraction expectedSimplifiedFraction) {
+        Fraction result = FractionOperations.simplify(fraction);
 
-        Fraction result = FractionOperations.simplify(fraction1);
-
-        assertEquals(new Fraction(1, 3), result);
-    }
-
-    @Test
-    public void should_simplify_4_6_by_2_3() {
-        Fraction fraction1 = new Fraction(4, 6);
-
-        Fraction result = FractionOperations.simplify(fraction1);
-
-        assertEquals(new Fraction(2, 3), result);
-    }
-
-    @Test
-    public void should_simplify_2_8_by_1_4() {
-        Fraction fraction1 = new Fraction(2, 8);
-
-        Fraction result = FractionOperations.simplify(fraction1);
-
-        assertEquals(new Fraction(1, 4), result);
-    }
-
-    @Test
-    public void should_simplify_6_8_by_3_4() {
-        Fraction fraction1 = new Fraction(2, 8);
-
-        Fraction result = FractionOperations.simplify(fraction1);
-
-        assertEquals(new Fraction(1, 4), result);
+        assertEquals(expectedSimplifiedFraction, result);
     }
 
     /** Fraction sum + simplification **/
-    @Test
-    public void should_sum_1_3_plus_1_6_be_1_2() {
-        Fraction fraction1 = new Fraction(1, 3);
-        Fraction fraction2 = new Fraction(1, 6);
-
-        Fraction result = FractionOperations.sum(fraction1, fraction2);
-
-        assertEquals(new Fraction(1, 2), result);
+    static Stream<Arguments> fractionsSumInputsAndNeedToSimplifyExpectedResult () {
+        return Stream.of(
+                Arguments.of(new Fraction(1, 3), new Fraction(1, 6), new Fraction(1, 2)),
+                Arguments.of(new Fraction(1, 3), new Fraction(2, 6), new Fraction(2, 3)),
+                Arguments.of(new Fraction(1, 6), new Fraction(2, 6), new Fraction(1, 2))
+        );
     }
 
-    /** Fraction sum + simplification **/
-    @Test
-    public void should_sum_1_3_plus_2_6_be_1_3() {
-        Fraction fraction1 = new Fraction(1, 3);
-        Fraction fraction2 = new Fraction(2, 6);
+    @ParameterizedTest(name = "{0} + {1} = {2} ")
+    @MethodSource("fractionsSumInputsAndNeedToSimplifyExpectedResult")
+    public void should_sum_of_2_fractions_provide_expected_simplified_results(
+        Fraction fraction1, Fraction fraction2, Fraction expectedFraction) {
 
-        Fraction result = FractionOperations.sum(fraction1, fraction2);
-
-        assertEquals(new Fraction(2, 3), result);
+        assertFractionSum(fraction1, fraction2, expectedFraction);
     }
 
-    /** Fraction sum + simplification **/
-    @Test
-    public void should_sum_1_6_plus_2_6_be_1_2() {
-        Fraction fraction1 = new Fraction(1, 6);
-        Fraction fraction2 = new Fraction(2, 6);
-
-        Fraction result = FractionOperations.sum(fraction1, fraction2);
-
-        assertEquals(new Fraction(1, 2), result);
-    }
 
 }
